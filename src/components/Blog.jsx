@@ -17,16 +17,16 @@ const Blog = ({ blog, addLike, deleteBlog, user }) => {
   return (
     <div>
       <div style={hideWhenVisibile} >
-        <p>{blog.title}</p>  <button onClick={toggleVisibility}>Show more</button>
+        <p>{blog.title}</p>  <button onClick={toggleVisibility} id="show-more">Show more</button>
       </div>
       <div style={showWhenVisibile}>
         <button onClick={toggleVisibility}>Show less</button>
-        {blog.title}<br />
+        <p>{blog.title}</p>
         {blog.author}<br />
         URL: {blog.url}<br />
-        {blog.likes} <button onClick={() => addLike(blog.id)}>like</button> <br />
+        {blog.likes} <button onClick={() => addLike(blog.id)} id="like">like</button> <br />
         <p>{blog?.user?.username}</p>
-        {user === blog?.user?.username && <button onClick={() => deleteBlog(blog.id)}>delete</button>}
+        {user === blog?.user?.username && <button onClick={() => deleteBlog(blog.id)} id="delete">delete</button>}
 
       </div>
     </div>
