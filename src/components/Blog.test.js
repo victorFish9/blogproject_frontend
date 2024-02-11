@@ -1,8 +1,8 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import Blog from './Blog'
+import React from "react";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import Blog from "./Blog";
 
 // test('renders content', () => {
 //     const blog = {
@@ -17,23 +17,20 @@ import Blog from './Blog'
 //     expect(element).toBeDefined()
 // })
 
-test('click the button', async () => {
+test("click the button", async () => {
+  const blog = {
+    title: "Component testing is done with react-testing-library",
+    author: "Component testing is done with react-testing-library",
+    url: "Component testing is done with react-testing-library",
+    likes: "Component testing is done with react-testing-library",
+    user: "Component testing is done with react-testing-library",
+  };
 
-    const blog = {
-        title: 'Component testing is done with react-testing-library',
-        author: 'Component testing is done with react-testing-library',
-        url: 'Component testing is done with react-testing-library',
-        likes: 'Component testing is done with react-testing-library',
-        user: 'Component testing is done with react-testing-library'
-    }
+  const mockHandler = jest.fn();
 
-    const mockHandler = jest.fn()
+  render(<Blog blog={blog} toggleImportance={mockHandler} />);
 
-    render(
-        <Blog blog={blog} toggleImportance={mockHandler} />
-    )
-
-    const user = userEvent.setup()
-    const button = screen.getByText('Show more')
-    await user.click(button)
-})
+  const user = userEvent.setup();
+  const button = screen.getByText("Show more");
+  await user.click(button);
+});
